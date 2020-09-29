@@ -12,3 +12,9 @@ do
     $VAULT_ADDR/v1/identity/entity/name/$entity_name | jq -r .data.aliases[].mount_accessor
 done | sort | uniq -c | sort -n
 
+##############
+
+curl -k -s \
+    --header "X-Vault-Token: $VAULT_TOKEN" \
+    --request LIST \
+    $VAULT_ADDR/v1/auth/aws/roles
